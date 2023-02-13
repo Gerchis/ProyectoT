@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://cnypngxj14njt"]
+
+[ext_resource type="Script" path="res://World/PrintDecals.gd" id="2_8rmw2"]
+[ext_resource type="PackedScene" uid="uid://cikr6qvoh3t6t" path="res://CharacterTest/CharacterTest.tscn" id="2_yhtil"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_alfap"]
+
+[sub_resource type="Environment" id="Environment_gmru4"]
+background_mode = 1
+background_color = Color(0.792157, 0.960784, 1, 1)
+ambient_light_color = Color(0.709804, 0.858824, 1, 1)
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_108os"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_y310m"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.78592)
+mesh = SubResource("SphereMesh_alfap")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.681092, -0.517742, 0.517742, 0, 0.707107, 0.707107, -0.732198, -0.481604, 0.481604, 0, 4.25298, 0)
+
+[node name="CharacterTest" parent="." instance=ExtResource("2_yhtil")]
+speed = 3.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_gmru4")
+camera_attributes = SubResource("CameraAttributesPractical_108os")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(8.49771, 0, 0, 0, 1, 0, 0, 0, 12.2632, 0, -0.24559, 0)
+layers = 16
+mesh = SubResource("BoxMesh_y310m")
+script = ExtResource("2_8rmw2")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+layers = 0
