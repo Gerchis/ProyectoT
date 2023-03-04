@@ -1,11 +1,13 @@
 MeshInstance3D
+DirectionalLight3D
+WorldEnvironment
+Node
+CollisionShape3D
+StaticBody3D
 Node3D
 Decal
-WorldEnvironment
 Camera3D
 SpringArm3D
 NavigationAgent3D
 CharacterBody3D
-DirectionalLight3D
-CollisionShape3D
 NavigationRegion3D

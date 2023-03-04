@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GridMapManager="*res://Manager/GridMapManager.gd"
+BattleMovementManager="*res://Manager/BattleMovementManager.gd"
 
 [input]
 

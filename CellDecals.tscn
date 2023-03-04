@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dq71qatr4qjkg"]
-
-[ext_resource type="Texture2D" uid="uid://cv1qohvsvaiut" path="res://CellDecal.png" id="1_crs10"]
-
-[node name="Decal" type="Decal"]
-size = Vector3(1, 1, 1)
-texture_albedo = ExtResource("1_crs10")
-cull_mask = 1048560

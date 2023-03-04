@@ -1,7 +1,5 @@
-res://World/World.tscn
 res://CharacterTest/CharacterTest.tscn
-res://CharacterTest/CharacterTest.gd
-res://Manager/GridMapManager.gd
-res://World/PrintDecals.gd
-res://CellDecals.tscn
 res://CharacterTest/CameraController.gd
+res://World/World.tscn
+res://CharacterTest/CharacterController.gd
+res://Manager/BattleMovementManager.gd

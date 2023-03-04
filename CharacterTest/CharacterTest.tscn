@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cikr6qvoh3t6t"]
 
-[ext_resource type="Script" path="res://CharacterTest/CharacterTest.gd" id="1_tpr23"]
+[ext_resource type="Script" path="res://CharacterTest/CharacterController.gd" id="1_jgv8j"]
 [ext_resource type="Script" path="res://CharacterTest/CameraController.gd" id="2_yk76d"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_eiowu"]
@@ -14,7 +14,7 @@ albedo_color = Color(0, 0, 0, 1)
 
 [node name="CharacterTest" type="CharacterBody3D"]
 transform = Transform3D(0.801582, 0, 0, 0, 0.801582, 0, 0, 0, 0.801582, 0, 0, 0)
-script = ExtResource("1_tpr23")
+script = ExtResource("1_jgv8j")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -24,14 +24,14 @@ shape = SubResource("CapsuleShape3D_eiowu")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_mg4ew")
 
-[node name="Node3D" type="Node3D" parent="."]
+[node name="CameraRoot" type="Node3D" parent="."]
 
-[node name="SpringArm3D" type="SpringArm3D" parent="Node3D"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1, 0)
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraRoot"]
+transform = Transform3D(-3.78552e-08, -0.5, 0.866025, -2.18557e-08, 0.866025, 0.5, -1, 0, -4.37114e-08, 0, 1, 0)
 spring_length = 7.0
 script = ExtResource("2_yk76d")
 
-[node name="Camera3D" type="Camera3D" parent="Node3D/SpringArm3D"]
+[node name="Camera3D" type="Camera3D" parent="CameraRoot/SpringArm3D"]
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.341429, 1.10656, 0)

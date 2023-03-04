@@ -1,24 +1,33 @@
 extends SpringArm3D
 
-@export var rotation_speed := 1
+@export var rotation_speed := 150.0
+
+var input_dir := Vector2.ZERO
+
+@onready var root := $".."
 
 func _process(delta):
-	var input_dir = get_input_dir()
-	
-	rotate_z(input_dir.y * delta * rotation_speed)
-	get_parent().rotate_y(input_dir.x * delta * rotation_speed)
+	get_inputs()
+	apply_rotation(delta)
 
-
-func get_input_dir() -> Vector2:
-	var result = Vector2.ZERO
+func get_inputs():
+	input_dir = Vector2.ZERO
 	
 	if Input.is_action_pressed("camera_up"):
-		result.y += 1
+		input_dir.y += 1
 	if Input.is_action_pressed("camera_down"):
-		result.y -= 1
+		input_dir.y -= 1
 	if Input.is_action_pressed("camera_right"):
-		result.x += 1
+		input_dir.x += 1
 	if Input.is_action_pressed("camera_left"):
-		result.x -= 1
+		input_dir.x -= 1
 	
-	return result.normalized()
+	input_dir = input_dir.normalized()
+
+func apply_rotation(delta : float):
+	
+	root.rotation_degrees.y += input_dir.x * rotation_speed * delta
+	rotation_degrees.x += input_dir.y * rotation_speed * delta
+	
+	rotation_degrees.x = clamp(rotation_degrees.x, -45, 0)
+

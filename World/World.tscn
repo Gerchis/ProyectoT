@@ -1,40 +1,49 @@
-[gd_scene load_steps=7 format=3 uid="uid://cnypngxj14njt"]
+[gd_scene load_steps=8 format=3 uid="uid://cnypngxj14njt"]
 
-[ext_resource type="Script" path="res://World/PrintDecals.gd" id="2_8rmw2"]
 [ext_resource type="PackedScene" uid="uid://cikr6qvoh3t6t" path="res://CharacterTest/CharacterTest.tscn" id="2_yhtil"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_alfap"]
+[sub_resource type="BoxMesh" id="BoxMesh_qds8i"]
 
-[sub_resource type="Environment" id="Environment_gmru4"]
-background_mode = 1
-background_color = Color(0.792157, 0.960784, 1, 1)
-ambient_light_color = Color(0.709804, 0.858824, 1, 1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_4l5xq"]
 
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_108os"]
+[sub_resource type="Sky" id="Sky_ghwg5"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_y310m"]
+[sub_resource type="Environment" id="Environment_ytvv5"]
+sky = SubResource("Sky_ghwg5")
+ssil_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y607n"]
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_morko"]
+material = SubResource("StandardMaterial3D_y607n")
 
 [node name="Node3D" type="Node3D"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.78592)
-mesh = SubResource("SphereMesh_alfap")
+[node name="Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(40, 0, 0, 0, 1, 0, 0, 0, 40, 0, 0, 0)
+mesh = SubResource("BoxMesh_qds8i")
+skeleton = NodePath("StaticBody3D/CollisionShape3D")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.681092, -0.517742, 0.517742, 0, 0.707107, 0.707107, -0.732198, -0.481604, 0.481604, 0, 4.25298, 0)
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
+shape = SubResource("BoxShape3D_4l5xq")
 
 [node name="CharacterTest" parent="." instance=ExtResource("2_yhtil")]
-speed = 3.0
+transform = Transform3D(-0.801582, 0, -7.00765e-08, 0, 0.801582, 0, 7.00765e-08, 0, -0.801582, 0, 0.662395, 0)
+wait_to_move = 0.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_gmru4")
-camera_attributes = SubResource("CameraAttributesPractical_108os")
+environment = SubResource("Environment_ytvv5")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 13.6272, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.310343, 0)
+mesh = SubResource("BoxMesh_morko")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(8.49771, 0, 0, 0, 1, 0, 0, 0, 12.2632, 0, -0.24559, 0)
-layers = 16
-mesh = SubResource("BoxMesh_y310m")
-script = ExtResource("2_8rmw2")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-layers = 0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.310343, 1.05279)
+mesh = SubResource("BoxMesh_morko")
