@@ -11,6 +11,7 @@ var can_move := true
 var in_movement := false
 
 @onready var camera := $CameraRoot/SpringArm3D/Camera3D
+@onready var body := $MeshInstance3D
 
 func _process(delta):
 	get_inputs()
@@ -49,6 +50,7 @@ func apply_movement():
 func cell_movement(delta):
 	if !in_movement and can_move and direction != Vector3.ZERO:
 		target_pos = BattleMovementManager.get_target_pos(direction, global_transform.origin)
+		turn_player(target_pos - global_transform.origin)
 		in_movement = true
 	
 	if in_movement and can_move:
@@ -66,3 +68,8 @@ func cell_movement(delta):
 
 func cell_movement_finished():
 	can_move = true
+
+func turn_player(target_point : Vector3):
+	target_point.y = 0
+	if target_point != Vector3.ZERO:
+		body.look_at(body.global_transform.origin + target_point.normalized())

@@ -1,5 +1,4 @@
-res://CharacterTest/CharacterTest.tscn
-res://CharacterTest/CameraController.gd
 res://World/World.tscn
+res://CharacterTest/CharacterTest.tscn
 res://CharacterTest/CharacterController.gd
-res://Manager/BattleMovementManager.gd
+res://CharacterTest/CameraController.gd
